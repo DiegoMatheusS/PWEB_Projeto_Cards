@@ -1,3 +1,18 @@
 .img{
   border-radius: 50%;
 }
+.card-titulo{
+  text-align: center;
+}
+.botao{
+  color: white;
+  border: solid darkgreen;
+  border-radius: 15%;
+  background-color: darkgreen;
+  padding: 2%;
+  width: 5%;
+  margin-left: 33%;
+}
+img{
+  border: solid white;
+}
