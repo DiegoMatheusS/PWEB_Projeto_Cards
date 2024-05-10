@@ -10,7 +10,12 @@ import { HomeComponent } from './components/home/home.component';
 import { LOCALE_ID } from '@angular/core';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+
 import { ListarProdutosComponent } from './components/produtos/listar-produtos/listar-produtos.component';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+import { CadastrarProdutoComponent } from './components/produtos/cadastrar-produto/cadastrar-produto.component';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localePt)
 
@@ -20,11 +25,15 @@ registerLocaleData(localePt)
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ListarProdutosComponent
+    ListarProdutosComponent,
+    CadastrarProdutoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    SharedModule,
+    HttpClientModule
   ],
   providers: [
     {provide : LOCALE_ID, useValue : 'pt-BR' },
