@@ -1,6 +1,6 @@
 export interface Iprodutos{
-  id: number;
-  nome: string;
+  id?: number;
+  name: string;
   validade: Date;
   precoProduto: number;
 }

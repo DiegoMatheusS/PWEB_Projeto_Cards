@@ -17,12 +17,43 @@ export class ProdutosService {
   {
     return this.http.get<Iprodutos[]>(this.URL).pipe(
       map(retorno => retorno),
-      catchError(erro => this.exibiErro(erro)))
-  };
+      catchError(erro => this.exibiErro(erro)));
+  }
+
+  buscarPorId(id: number): Observable<Iprodutos>
+  {
+    return this.http.get<Iprodutos[]>(`${this.URL}/${id}`).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibiErro(erro)));
+  }
+
+
+
+  cadastrar(produto: Iprodutos): Observable<Iprodutos> {
+    return this.http.post<Iprodutos[]>(this.URL, produto).pipe(map(retorno => retorno),
+    catchError(erro => this.exibiErro(erro)));
+  }
+
+  atualizar(produto: Iprodutos): Observable<Iprodutos> {
+    return this.http.post<Iprodutos[]>(`${this.URL}/ ${produto.id}`,produto).pipe(map(retorno => retorno),
+    catchError(erro => this.exibiErro(erro)));
+  }
+
+
+  excluir(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.URL}/${id}`).pipe(
+      map(retorno => retorno),
+      catchError(erro => this.exibiErro(erro))
+    );
+  }
+
+
   exibiErro(e: any): Observable<any>{
     this.exibirMensagem('Erro!!!', 'Nâo foi possivel realizar a operação', 'toast-error');
     return EMPTY;
   }
+
+
   exibirMensagem(titulo: string, mensagem: string, tipo: string): void{
     this.toastr.show(mensagem, titulo,{closeButton: true, progressBar: true}, tipo)
 
